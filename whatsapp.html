@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WhatsApp Form with FontAwesome Icons</title>
+
+  <!-- Font Awesome CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pVPH8cM1R7n+YuIj+fvO8H0Q1/gS94PY4Np1C2XqPmoc+4p0bVh/fn3U+uZheq/Ut2v8rAzX+rI+6h0Lld1hQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    /* Container centers form horizontally with padding */
+    .container {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+      background-color: #3A1B28;
+      min-width: 100%;
+    }
+
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      background-color: #2A1420;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      max-width: 100%;
+      color: #fff;
+      box-sizing: border-box;
+      align-items: center;
+    }
+
+    /* Wrapper for icon + input/select */
+    .input-wrapper {
+      position: relative;
+      flex: 1 1 150px;
+      min-width: 150px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 6px;
+      color: #000;
+      box-sizing: border-box;
+    }
+
+    /* Left icon */
+    .input-wrapper .icon {
+      color: #000000;
+      padding: 0 10px;
+      font-size: 18px;
+      user-select: none;
+      flex-shrink: 0;
+      cursor: default;
+    }
+
+    /* Inputs and select inside wrapper */
+    .input-wrapper input,
+    .input-wrapper select {
+      border: none;
+      outline: none;
+      font-size: 14px;
+      height: 44px;
+      flex: 1;
+      padding: 0 10px;
+      background-color: transparent;
+      color: #000;
+      border-radius: 0 6px 6px 0;
+      box-sizing: border-box;
+    }
+
+    /* Special location wrapper: icon is a button on left, input next */
+    .location-wrapper {
+      position: relative;
+      flex: 1 1 150px;
+      min-width: 150px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    /* Dropdown select with icon wrapper */
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background: transparent;
+      color: #000;
+      cursor: pointer;
+    }
+
+    /* Buttons */
+    button[type="submit"],
+    #callBtn {
+      background-color: #D3B68F;
+      color: #3A1B28;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      flex: none;
+      min-width: 150px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      border: none;
+      box-sizing: border-box;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #b99f77;
+    }
+
+    #callBtn {
+      background-color: #B8333E;
+      color: white;
+    }
+
+    #callBtn:hover {
+      background-color: #90262b;
+    }
+
+    /* Fix spacing between location and dropdown */
+    form > *:not(.location-wrapper):not(:last-child) {
+      margin-right: 10px;
+    }
+
+@media (max-width: 768px) {
+  form {
+    align-items: center;
+  }
+  .input-wrapper,
+  .location-wrapper,
+  button[type="submit"],
+  #callBtn {
+    flex: none;     
+    width: 100%;       
+    max-width: 320px;  
+  }
+  form {
+    gap: 15px;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <form id="whatsappForm" autocomplete="off">
+      <div class="input-wrapper">
+        <span class="icon"><i class="fa-solid fa-user"></i></span>
+        <input type="text" id="name" placeholder="Your Name" required />
+      </div>
+
+      <div class="input-wrapper">
+        <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+        <input type="email" id="email" placeholder="Your Email" required />
+      </div>
+
+      <div class="location-wrapper">
+        <button type="button" id="locateBtn" aria-label="Share Live Location" title="Share Live Location"><i class="fa-solid fa-location-dot"></i></button>
+        <input type="text" id="location" placeholder="Your Location" />
+      </div>
+
+      <div class="input-wrapper">
+        <span class="icon"><i class="fa-solid fa-list"></i></span>
+        <select id="message" required>
+          <option value="" disabled selected>Select a reason</option>
+          <option value="Consultation">Consultation</option>
+          <option value="Common illness">Common illness</option>
+          <option value="Urgent care">Urgent care</option>
+          <option value="Treatment of minor injuries">Treatment of minor injuries</option>
+          <option value="Chronic disease management">Chronic disease management</option>
+          <option value="Comprehensive medical packages">Comprehensive medical packages</option>
+        </select>
+      </div>
+
+      <button type="submit">Send via WhatsApp</button>
+      <button type="button" id="callBtn">Call Now</button>
+    </form>
+  </div>
+
+  <script>
+    const phoneNumber = "971507119616"; // Full number without plus sign for WhatsApp & Call
+
+    // Live location button functionality inside location input
+    document.getElementById("locateBtn").addEventListener("click", () => {
+      if (!navigator.geolocation) {
+        alert("Geolocation is not supported by your browser");
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          const locationInput = document.getElementById("location");
+          locationInput.value = `https://www.google.com/maps?q=${latitude},${longitude}`;
+        },
+        () => {
+          alert("Unable to retrieve your location. Please allow location access.");
+        }
+      );
+    });
+
+    // Call button functionality
+    document.getElementById("callBtn").addEventListener("click", () => {
+      window.location.href = "tel:+971507119616";
+    });
+
+    // Form submit - open WhatsApp chat with pre-filled message
+    document.getElementById("whatsappForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const location = document.getElementById("location").value.trim();
+      const message = document.getElementById("message").value;
+
+      if (!message) {
+        alert("Please select a reason from the dropdown");
+        return;
+      }
+
+      let text = `Name: ${name}\nEmail: ${email}`;
+      if (location) text += `\nLocation: ${location}`;
+      text += `\nReason: ${message}`;
+
+      const encodedText = encodeURIComponent(text);
+      const url = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+
+</html>

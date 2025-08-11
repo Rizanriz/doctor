@@ -487,16 +487,19 @@
             margin: 20px auto;
         }
 
-        
-        .hero-section {
-            background-color: #ffffff80;
+       .hero-section {
+            background-color: #fff;
             color: #3a1b28;
             padding: 80px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        
+
         .hero-section::before {
             content: '';
             position: absolute;
@@ -507,14 +510,15 @@
             background: rgba(0, 0, 0, 0.1);
             z-index: 1;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
+            width: 100%;
         }
-        
+
         .section-label {
             font-size: 14px;
             font-weight: 500;
@@ -522,20 +526,22 @@
             text-transform: uppercase;
             margin-bottom: 20px;
             opacity: 0.9;
+            color: #3a1b28;
         }
-        
+
         .main-title {
             font-size: 48px;
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 15px;
+            color: #3a1b28;
         }
-        
+
         .subtitle {
             color: #3a1b28;
             font-weight: 700;
         }
-        
+
         .description {
             font-size: 18px;
             line-height: 1.6;
@@ -544,44 +550,46 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            color: #3a1b28;
         }
-        
+
         .stats-number {
             font-size: 120px;
             font-weight: 900;
             line-height: 1;
             margin-bottom: 10px;
-            background: #DCBD89;;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #D3B68F;
             text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: block;
         }
-        
+
         .stats-label {
             font-size: 18px;
             font-weight: 600;
             opacity: 0.9;
+            color: #3a1b28;
         }
-        
+
         .trust-text {
             font-size: 20px;
             font-weight: 700;
             margin-top: 30px;
             margin-bottom: 15px;
+            color: #3a1b28;
         }
-        
+
         .trust-description {
             font-size: 16px;
             line-height: 1.6;
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
-        }
-        .hero-section p{
             color: #3a1b28;
         }
 
+        .hero-section p {
+            color: #3a1b28;
+        }
 
 
 
@@ -709,5 +717,33 @@
             
             .section-heading p {
                 font-size: 1rem;
+            }
+             .hero-section {
+                padding: 40px 10px;
+            }
+
+            .main-title {
+                font-size: 28px;
+            }
+
+            .description {
+                font-size: 15px;
+                margin-bottom: 30px;
+            }
+
+            .stats-number {
+                font-size: 60px;
+            }
+
+            .section-label {
+                font-size: 12px;
+            }
+
+            .trust-text {
+                font-size: 16px;
+            }
+
+            .trust-description {
+                font-size: 14px;
             }
         }
