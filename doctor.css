@@ -487,109 +487,102 @@
             margin: 20px auto;
         }
 
-       .hero-section {
-            background-color: #fff;
-            color: #3a1b28;
+ .hero-section {
+        background-color: #fff;
+        color: #3a1b28;
+        padding: 100px 20px;
+        text-align: center;
+        position: relative;
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        position: relative;
+        width: 100%;
+    }
+
+    .intro-text {
+        font-size: 24px;
+        line-height: 1.6;
+        margin-bottom: 40px;
+        color: #3a1b28;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        position: relative;
+        padding-bottom: 30px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .intro-text::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 2px;
+        background: #D3B68F;
+    }
+
+    .stats-container {
+        margin-top: 40px;
+    }
+
+    .stats-number {
+        font-size: 120px;
+        font-weight: 900;
+        line-height: 1;
+        margin-bottom: 30px;
+        color: #D3B68F;
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: block;
+    }
+
+    .trust-text {
+        font-size: 24px;
+        font-weight: 600;
+        margin-top: 0;
+        margin-bottom: 15px;
+        color: #3a1b28;
+    }
+
+    .trust-description {
+        font-size: 18px;
+        line-height: 1.6;
+        max-width: 600px;
+        margin: 0 auto;
+        color: #3a1b28;
+        opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+        .hero-section {
             padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            min-height: auto;
         }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.1);
-            z-index: 1;
+        
+        .intro-text {
+            font-size: 20px;
+            margin-bottom: 40px;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            width: 100%;
-        }
-
-        .section-label {
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            opacity: 0.9;
-            color: #3a1b28;
-        }
-
-        .main-title {
-            font-size: 48px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 15px;
-            color: #3a1b28;
-        }
-
-        .subtitle {
-            color: #3a1b28;
-            font-weight: 700;
-        }
-
-        .description {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 60px;
-            opacity: 0.95;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #3a1b28;
-        }
-
+        
         .stats-number {
-            font-size: 120px;
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 10px;
-            color: #D3B68F;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            display: block;
+            font-size: 80px;
         }
-
-        .stats-label {
-            font-size: 18px;
-            font-weight: 600;
-            opacity: 0.9;
-            color: #3a1b28;
-        }
-
+        
         .trust-text {
             font-size: 20px;
-            font-weight: 700;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #3a1b28;
         }
-
+        
         .trust-description {
             font-size: 16px;
-            line-height: 1.6;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-            color: #3a1b28;
         }
-
-        .hero-section p {
-            color: #3a1b28;
-        }
+    }
 
 
 
